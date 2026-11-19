@@ -1,5 +1,3 @@
-/* Styles for the photos and fun facts on each destination page.
-   Your existing styles.css still controls the navigation and overall theme. */
 
 .city-content {
     width: calc(100% - 32px);
