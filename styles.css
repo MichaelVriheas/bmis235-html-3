@@ -1,0 +1,110 @@
+/* BMIS 235 — restored website theme
+   Matches the original cream background and blue centered navigation.
+   Keep this file beside index.html and page1.html–page4.html. */
+
+body {
+    margin: 0;
+    padding: 0 24px 36px;
+    background-color: #f4efe6;
+    color: #292929;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Blue navigation bar with centered handwritten image links */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 30px;
+    padding: 14px 18px 20px;
+    background-color: #2b5d8c;
+}
+
+nav a {
+    display: inline-block;
+    line-height: 0;
+}
+
+nav img {
+    display: block;
+    width: 190px;
+    max-width: 100%;
+    height: auto;
+    background: #ffffff;
+}
+
+nav a:focus-visible {
+    outline: 3px solid #f5cf7b;
+    outline-offset: 4px;
+}
+
+/* Headings and text on the home and city pages */
+h1 {
+    color: #2b5d8c;
+    font-size: 52px;
+    line-height: 1.15;
+    text-align: center;
+    margin: 30px 0 32px;
+}
+
+p {
+    font-size: 22px;
+    line-height: 1.55;
+    text-align: center;
+    margin: 0 auto 24px;
+}
+
+/* Place for the interactive homepage map */
+.showcase {
+    width: 100%;
+    max-width: 900px;
+    margin: 28px auto 0;
+}
+
+/* Bottom credit */
+footer {
+    color: #777777;
+    font-size: 17px;
+    text-align: center;
+    margin: 48px auto 0;
+}
+
+/* Keep the same look without overflowing on phones */
+@media (max-width: 650px) {
+    body {
+        padding: 0 12px 24px;
+    }
+
+    nav {
+        gap: 8px;
+        padding: 12px 8px 14px;
+        margin-bottom: 22px;
+    }
+
+    nav img {
+        width: 130px;
+    }
+
+    h1 {
+        font-size: 38px;
+        margin: 24px 0;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        font-size: 14px;
+        margin-top: 34px;
+    }
+}
+
+@media (max-width: 380px) {
+    nav img {
+        width: 118px;
+    }
+}
