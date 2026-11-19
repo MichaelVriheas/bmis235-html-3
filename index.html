@@ -27,7 +27,484 @@
     <p>Write about your idea here.</p>
 
     <!-- Add your interactive graphic here for Part 7. -->
-    <div class="showcase"></div>
+    <div class="showcase">
+    
+<!-- HTML: Displays the Greece map and clickable locations. -->
+<section class="greek-map-widget">
+  <div class="greek-map-heading">
+    <div class="greek-eyebrow">WHERE I'M FROM · ΕΛΛΑΔΑ</div>
+    <div class="greek-map-title">Explore Greece</div>
+  </div>
+
+  <div class="greek-map-layout">
+    <svg class="greek-map" viewBox="0 0 430 360"
+         role="group"
+         aria-label="Interactive map of Greece with four locations">
+
+      <!-- Sea background -->
+      <rect width="430" height="360" rx="12"
+            fill="#dceaf0"/>
+
+      <!-- Greece mainland and Peloponnese -->
+      <path class="greek-land" d="
+        M385.8 34 L370.6 63.4 L358.9 68.7
+        L329.1 67.3 L303.5 62.9 L244.2 75.1
+        L278.1 101.5 L253.2 109.2 L226 109.2
+        L200 85 L190.8 95.4 L201.8 123.4
+        L226.3 145.5 L207.8 155.8 L235.1 177.4
+        L259.4 191.1 L260.1 217.6 L214.8 205.2
+        L229.2 229.1 L198.1 234.1 L216.7 275.6
+        L184.2 276.1 L144 255.7 L125.6 218.1
+        L117 186.8 L97.9 165.2 L72.8 138.4
+        L69.5 125 L92.3 102.2 L95.2 87
+        L111.1 80.1 L112.1 67.8 L144.2 63.6
+        L162.9 53.4 L189.4 54.3 L197.5 46.1
+        L206.8 44.5 L243.1 45.9 L282.3 33
+        L316.8 49.4 L361.4 45 L361.9 21.5 Z"/>
+
+      <!-- Crete -->
+      <path class="greek-land" d="
+        M243.4 309.3 L270.2 325.1
+        L308.4 322.4 L344.8 325.8
+        L343.7 334 L370.4 328.3
+        L364.2 342.2 L293.7 346.2
+        L294.2 338.4 L234.4 329.3 Z"/>
+
+      <!-- Greek islands -->
+      <g class="greek-islands">
+        <ellipse cx="62" cy="126" rx="5" ry="12"/>
+        <ellipse cx="91" cy="166" rx="4" ry="10"/>
+        <ellipse cx="99" cy="207" rx="5" ry="9"/>
+        <ellipse cx="280" cy="158" rx="5" ry="12"
+                 transform="rotate(-20 280 158)"/>
+        <ellipse cx="300" cy="205" rx="6" ry="9"/>
+        <ellipse cx="326" cy="226" rx="5" ry="6"/>
+        <ellipse cx="348" cy="177" rx="7" ry="11"/>
+        <ellipse cx="365" cy="212" rx="4" ry="9"/>
+        <ellipse cx="310" cy="267" rx="5" ry="5"/>
+        <ellipse cx="340" cy="273" rx="5" ry="7"/>
+      </g>
+
+      <text x="150" y="177" class="greek-map-caption">
+        GREECE
+      </text>
+
+      <!-- Interactive pins -->
+      <g class="greek-marker" data-city="thalames"
+         transform="translate(176.3 258.5)"
+         role="button" tabindex="0"
+         aria-label="Select Thalames"
+         aria-pressed="false">
+        <title>Thalames</title>
+        <circle class="greek-hit" r="11"/>
+        <circle class="greek-pin" r="7.5"/>
+        <circle class="greek-pin-center" r="2.5"/>
+      </g>
+
+      <g class="greek-marker" data-city="kastoria"
+         transform="translate(124.1 82.9)"
+         role="button" tabindex="0"
+         aria-label="Select Kastoria"
+         aria-pressed="false">
+        <title>Kastoria</title>
+        <circle class="greek-hit" r="11"/>
+        <circle class="greek-pin" r="7.5"/>
+        <circle class="greek-pin-center" r="2.5"/>
+      </g>
+
+      <g class="greek-marker" data-city="sparti"
+         transform="translate(181.2 244.9)"
+         role="button" tabindex="0"
+         aria-label="Select Sparti"
+         aria-pressed="false">
+        <title>Sparti</title>
+        <circle class="greek-hit" r="11"/>
+        <circle class="greek-pin" r="7.5"/>
+        <circle class="greek-pin-center" r="2.5"/>
+      </g>
+
+      <g class="greek-marker" data-city="tripoli"
+         transform="translate(178.9 224.1)"
+         role="button" tabindex="0"
+         aria-label="Select Tripoli"
+         aria-pressed="false">
+        <title>Tripoli</title>
+        <circle class="greek-hit" r="11"/>
+        <circle class="greek-pin" r="7.5"/>
+        <circle class="greek-pin-center" r="2.5"/>
+      </g>
+
+      <!-- Popup shown when a pin is selected -->
+      <g class="greek-popup" visibility="hidden">
+        <rect width="125" height="35" rx="8"
+              fill="#ffffff" stroke="#2d5d89"
+              stroke-width="1.5"/>
+        <text x="62.5" y="22"
+              text-anchor="middle"
+              class="greek-popup-text"></text>
+      </g>
+    </svg>
+
+    <!-- Selected city information -->
+    <aside class="greek-info">
+      <div class="greek-selection">
+        <div class="greek-info-caption">DISCOVER A PLACE</div>
+        <div class="greek-selected-name"
+             aria-live="polite">Select a pin</div>
+        <div class="greek-selected-greek"></div>
+        <div class="greek-selected-region">
+          Click a map pin to reveal its location.
+        </div>
+      </div>
+
+      <div class="greek-choices"
+           aria-label="Choose a location">
+        <button type="button" data-city="thalames">
+          Thalames
+        </button>
+        <button type="button" data-city="kastoria">
+          Kastoria
+        </button>
+        <button type="button" data-city="sparti">
+          Sparti
+        </button>
+        <button type="button" data-city="tripoli">
+          Tripoli
+        </button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- CSS: Styles only this graphic using the site's colors. -->
+<style>
+.showcase .greek-map-widget {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  background: #f5f0e7;
+  border: 2px solid #2d5d89;
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: Georgia, serif;
+}
+
+.showcase .greek-map-widget * {
+  box-sizing: border-box;
+}
+
+.showcase .greek-map-heading {
+  padding: 13px 16px 9px;
+  text-align: center;
+}
+
+.showcase .greek-eyebrow {
+  color: #53728d;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.showcase .greek-map-title {
+  color: #2d5d89;
+  font-family: Georgia, serif;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 3px;
+}
+
+.showcase .greek-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: 10px;
+  padding: 0 12px 12px;
+}
+
+.showcase .greek-map {
+  display: block;
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+}
+
+.showcase .greek-land {
+  fill: #f5f0e7;
+  stroke: #2d5d89;
+  stroke-width: 1.7;
+  stroke-linejoin: round;
+}
+
+.showcase .greek-islands {
+  fill: #f5f0e7;
+  stroke: #2d5d89;
+  stroke-width: 1.4;
+}
+
+.showcase .greek-map-caption {
+  fill: #2d5d89;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  opacity: 0.55;
+}
+
+.showcase .greek-marker {
+  cursor: pointer;
+  outline: none;
+}
+
+.showcase .greek-hit {
+  fill: transparent;
+}
+
+.showcase .greek-pin {
+  fill: #bd7135;
+  stroke: white;
+  stroke-width: 2.5;
+}
+
+.showcase .greek-pin-center {
+  fill: #fff8ec;
+}
+
+.showcase .greek-marker:hover .greek-pin,
+.showcase .greek-marker:focus .greek-pin,
+.showcase .greek-marker.is-selected .greek-pin {
+  fill: #2d5d89;
+  stroke: #e5b96c;
+  stroke-width: 3.5;
+}
+
+.showcase .greek-marker:focus .greek-hit {
+  stroke: #2d5d89;
+  stroke-width: 2;
+  stroke-dasharray: 3 2;
+}
+
+.showcase .greek-popup {
+  pointer-events: none;
+}
+
+.showcase .greek-popup-text {
+  fill: #173c60;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.showcase .greek-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px 13px;
+  background: #2d5d89;
+  border-radius: 12px;
+  color: #ffffff;
+}
+
+.showcase .greek-info-caption {
+  color: #e7c98e;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.showcase .greek-selected-name {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+}
+
+.showcase .greek-selected-greek {
+  font-size: 17px;
+  color: #e7c98e;
+  margin-top: 4px;
+}
+
+.showcase .greek-selected-region {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 12px;
+  opacity: 0.9;
+}
+
+.showcase .greek-choices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.showcase .greek-choices button {
+  width: 100%;
+  border: 1px solid #b5cbda;
+  background: #f8f3e9;
+  color: #234d74;
+  border-radius: 7px;
+  padding: 7px 9px;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.showcase .greek-choices button:hover,
+.showcase .greek-choices button:focus,
+.showcase .greek-choices button.is-selected {
+  background: #e7c98e;
+  color: #173c60;
+  border-color: #e7c98e;
+}
+
+@media (max-width: 600px) {
+  .showcase .greek-map-heading {
+    padding: 10px 8px 7px;
+  }
+
+  .showcase .greek-map-title {
+    font-size: 22px;
+  }
+
+  .showcase .greek-map-layout {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 0 8px 8px;
+  }
+
+  .showcase .greek-map {
+    height: 230px;
+  }
+
+  .showcase .greek-info {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: center;
+    gap: 7px;
+    padding: 10px;
+  }
+
+  .showcase .greek-selected-name {
+    font-size: 17px;
+    margin-top: 4px;
+  }
+
+  .showcase .greek-selected-greek {
+    font-size: 13px;
+  }
+
+  .showcase .greek-selected-region {
+    font-size: 10px;
+    margin-top: 4px;
+  }
+
+  .showcase .greek-choices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .showcase .greek-choices button {
+    font-size: 11px;
+    padding: 8px 3px;
+    text-align: center;
+  }
+}
+</style>
+
+<!-- JavaScript: Makes pins and location buttons interactive. -->
+<script>
+(() => {
+  const host = document.currentScript.closest(".showcase");
+  if (!host) return;
+
+  const widget = host.querySelector(".greek-map-widget");
+
+  const cities = {
+    thalames: {
+      name: "Thalames",
+      greek: "Θαλάμες",
+      region: "West Mani, Messenia",
+      x: 176.3,
+      y: 258.5
+    },
+    kastoria: {
+      name: "Kastoria",
+      greek: "Καστοριά",
+      region: "Western Macedonia",
+      x: 124.1,
+      y: 82.9
+    },
+    sparti: {
+      name: "Sparti",
+      greek: "Σπάρτη",
+      region: "Laconia, Peloponnese",
+      x: 181.2,
+      y: 244.9
+    },
+    tripoli: {
+      name: "Tripoli",
+      greek: "Τρίπολη",
+      region: "Arcadia, Peloponnese",
+      x: 178.9,
+      y: 224.1
+    }
+  };
+
+  const nameDisplay =
+    widget.querySelector(".greek-selected-name");
+  const greekDisplay =
+    widget.querySelector(".greek-selected-greek");
+  const regionDisplay =
+    widget.querySelector(".greek-selected-region");
+  const popup =
+    widget.querySelector(".greek-popup");
+  const popupText =
+    widget.querySelector(".greek-popup-text");
+
+  const controls = widget.querySelectorAll("[data-city]");
+
+  function selectCity(id) {
+    const city = cities[id];
+    if (!city) return;
+
+    nameDisplay.textContent = city.name;
+    greekDisplay.textContent = city.greek;
+    regionDisplay.textContent = city.region;
+
+    popupText.textContent = city.name;
+
+    popup.setAttribute(
+      "transform",
+      "translate(" + (city.x + 14) + " " + (city.y - 40) + ")"
+    );
+
+    popup.setAttribute("visibility", "visible");
+
+    controls.forEach(control => {
+      const active = control.dataset.city === id;
+
+      control.classList.toggle("is-selected", active);
+      control.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  controls.forEach(control => {
+    control.addEventListener("click", () => {
+      selectCity(control.dataset.city);
+    });
+
+    if (control.tagName.toLowerCase() === "g") {
+      control.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          selectCity(control.dataset.city);
+        }
+      });
+    }
+  });
+})();
+</script>
+    </div>
 
     <footer>Built by Michael Vriheas &middot; BMIS 235</footer>
 
